@@ -1,0 +1,19 @@
+services:
+  node1:
+    container_name: node1
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./:/var/app
+    ports:
+      - 50052:50052
+  node2:
+    container_name: node2
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./:/var/app
+    ports:
+      - 50053:50053
