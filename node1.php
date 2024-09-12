@@ -27,5 +27,14 @@ run(function () {
             fn() => new HelloResponseActor()
         );
         $system->root()->spawnNamed($props, 'hello');
+        $ref = $system->root()->spawn(
+            ActorSystem\Props::fromProducer(fn() => new \PhluxorExample\LocalActor())
+        );
+        $future = $system->root()->requestFuture(
+            $ref,
+            new \PhluxorExample\Message\LocalHello('node1 world'),
+            1
+        );
+        var_dump((string) $future->result()->value()); // local hello
     });
 });
