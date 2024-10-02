@@ -34,7 +34,7 @@ run(function () {
         \Swoole\Coroutine::sleep(1);
         $future = $system->root()->requestFuture(
             new ActorSystem\Ref(new ActorSystem\ProtoBuf\Pid([
-                'address' => 'node1:50052',
+                'address' => 'localhost:50052',
                 'id' => 'hello',
             ])),
             new HelloRequest(['name' => 'Phluxor']),
@@ -51,6 +51,6 @@ run(function () {
             1
         );
         var_dump((string) $future->result()->value()); // local hello
-        $remote->shutdown();
+        // $remote->shutdown();
     });
 });

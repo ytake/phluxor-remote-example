@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package protobuf;
+
+option php_namespace = "PhluxorExample\\ProtoBuf";
+option php_metadata_namespace = "PhluxorExample\\Metadata";
+
+message StartTest {
+  string subject = 1;
+}
+
+message SubmitTest {
+  string subject = 1;
+  string name = 2;
+}

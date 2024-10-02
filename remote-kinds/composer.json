@@ -1,0 +1,27 @@
+{
+  "name": "ytake/phluxor-remote-example",
+  "description": "phluxor remote example",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "yuuki takezawa",
+      "email": "yuuki.takezawa@comnect.jp.net"
+    }
+  ],
+  "require": {
+    "php": "^8.3",
+    "ext-swoole": "^5.0",
+    "phluxor/phluxor": "^0.1.10",
+    "phluxor/phluxor-remote": "^0.1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "PhluxorExample\\": "src/PhluxorExample"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}
