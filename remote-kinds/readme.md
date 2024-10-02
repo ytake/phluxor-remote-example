@@ -6,22 +6,22 @@ remote actor system communication example.
 
 ```mermaid
 flowchart TD
- subgraph RemoteActorSystem["Remote ActorSystem"]
+ subgraph LocalActorSystem["ローカルアクターシステム"]
+        先生アクター["先生アクター"]
+        教室アクター["教室アクター"]
+      end
+ subgraph RemoteActorSystem["リモートアクターシステム"]
         生徒アクター["生徒アクター"]
   end
  subgraph s1[Endpoint]
         WebSocket["WebSocket"]
   end
- subgraph LocalActorSystem["Local ActorSystem"]
-        先生アクター["先生アクター"]
-        教室アクター["教室アクター"]
-      end
+    教室アクター -- *command.PrepareTest --> 先生アクター
+    先生アクター -- *command.StartTest --> WebSocket
+    WebSocket -- *command.StartTest --> 生徒アクター
+    生徒アクター -- *command.SubmitTest --> WebSocket
+    WebSocket -- *command.SubmitTest --> 先生アクター
 
-教室アクター -- *command.PrepareTest --> 先生アクター
-先生アクター -- *command.StartTest --> WebSocket
-WebSocket -- *command.StartTest --> 生徒アクター
-生徒アクター -- *command.SubmitTest --> WebSocket
-WebSocket -- *command.SubmitTest --> 先生アクター
 ```
 
 [日本語での仕組み解説はこちら](https://blog.ytake.jp.net/entry/2024/10/02/090000)
